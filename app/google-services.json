@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "109633892539",
+    "project_id": "exercise-8a5ee",
+    "storage_bucket": "exercise-8a5ee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109633892539:android:e5001d8cd5e479c47d399e",
+        "android_client_info": {
+          "package_name": "com.example.exercise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9O1tZx_E0EhGilQxwJ6PRwpwLWUG4RHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
