@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/title"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:background="@color/light_blue"
+        android:padding="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <CalendarView
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp" />
+
+    <Button
+        android:id="@+id/status_circle"
+        android:backgroundTint="@color/black"
+        android:layout_width="22dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="476dp"
+        android:layout_marginStart="93dp"
+        app:cornerRadius="40dp" />
+
+    <TextView
+        android:id="@+id/session_status"
+        android:textColor="#000"
+        android:text="cardio session NOT in progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exercise Tracker Backend Test"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="12dp"
+        android:layout_below="@+id/calendar"
+        android:layout_marginStart="115dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/description"
+        android:text="@string/description"
+        android:textColor="#000"
+        android:layout_width="330dp"
+        android:layout_height="270dp"
+        android:background="@color/light_gray"
+        android:padding="12dp"
+        android:layout_below="@+id/session_status"
+        android:layout_marginStart="40dp" />
+
+    <Button
+        android:id="@+id/track_cardio"
+        android:text="@string/track_cardio"
+        android:textSize="15sp"
+        android:backgroundTint="@color/black"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="800dp"
+        android:layout_marginStart="40dp"
+        app:cornerRadius="10dp" />
+
+    <Button
+        android:id="@+id/add_workout"
+        android:text="@string/add_workout"
+        android:textSize="15sp"
+        android:backgroundTint="@color/black"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="800dp"
+        android:layout_marginStart="220dp"
+        app:cornerRadius="10dp" />
+
+</RelativeLayout>

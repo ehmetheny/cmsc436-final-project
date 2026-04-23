@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">exercise</string>
+    <string name="app_name">Exercise Diary</string>
+    <string name="track_cardio">Track Cardio</string>
+    <string name="add_workout">Add Workout</string>
+    <string name="date">Date</string>
+    <string name="activity">Activity</string>
+    <string name="sets">Sets</string>
+    <string name="reps">Reps</string>
+    <string name="weight">Weight</string>
+    <string name="intensity">Intensity</string>
+    <string name="high">High</string>
+    <string name="medium">Medium</string>
+    <string name="low">Low</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
+    <string name="description">Exercise Diary is here to help you track your fitness and meet all your health goals!\n\n
+        Add a workout (i.e., activity, sets, reps, weight, and intensity) using the Add Workout button below.\n\n
+        Start a cardio session and track distance and duration using the Track Cardio button below.\n\n
+        Use the calendar to view to check old workout logs and cardio sessions.
+    </string>
 </resources>

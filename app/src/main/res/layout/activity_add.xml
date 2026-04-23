@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="@string/add_workout"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:background="@color/light_blue"
+        android:padding="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/activity_input"
+        android:layout_width="330dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/title"
+        android:hint="@string/activity" />
+
+    <EditText
+        android:id="@+id/sets_input"
+        android:layout_width="330dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/title"
+        android:inputType="numberDecimal"
+        android:hint="@string/sets"/>
+
+    <EditText
+        android:id="@+id/reps_input"
+        android:layout_width="330dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/title"
+        android:inputType="numberDecimal"
+        android:hint="@string/reps" />
+
+    <EditText
+        android:id="@+id/weight_input"
+        android:layout_width="330dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="240dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/title"
+        android:inputType="numberDecimal"
+        android:hint="@string/weight" />
+
+    <TextView
+        android:id="@+id/label_intensity"
+        android:text="@string/intensity"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:id="@+id/intensity_radio"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="470dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/high" />
+
+        <RadioButton
+            android:id="@+id/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/medium" />
+
+        <RadioButton
+            android:id="@+id/low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/low" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/submit"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/intensity_radio" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/cancel"
+        android:textColor="@color/black"
+        android:backgroundTint="#0000"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/submit" />
+
+</RelativeLayout>

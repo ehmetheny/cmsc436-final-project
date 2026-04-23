@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="@string/date"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:background="@color/light_blue"
+        android:padding="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:id="@+id/workouts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title">
+    </ListView>
+
+    <Button
+        android:id="@+id/back"
+        android:text="@string/back"
+        android:textSize="15sp"
+        android:backgroundTint="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="800dp"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
