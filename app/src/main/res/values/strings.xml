@@ -14,6 +14,18 @@
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="back">Back</string>
+    <string name="weight_unit_kg">Weight unit: kg</string>
+    <string name="weight_unit_lb">Weight unit: lb</string>
+    <string name="use_pounds_label">Use pounds</string>
+    <string name="intensity_selected_default">Selected intensity: Medium</string>
+    <string name="intensity_selected">Selected intensity: %1$s</string>
+    <string name="session_timer_default">Elapsed: 00:00</string>
+    <string name="session_timer_format">Elapsed: %1$s</string>
+    <string name="session_distance_default">Distance: 0.00 mi</string>
+    <string name="session_distance_format">Distance: %1$.2f mi</string>
+    <string name="no_entries_yet">No entries yet.</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_banner_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="description">Exercise Diary is here to help you track your fitness and meet all your health goals!\n\n
         Add a workout (i.e., activity, sets, reps, weight, and intensity) using the Add Workout button below.\n\n
         Start a cardio session and track distance and duration using the Track Cardio button below.\n\n

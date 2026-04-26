@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -25,56 +26,103 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="130dp" />
 
-    <Button
-        android:id="@+id/status_circle"
-        android:backgroundTint="@color/black"
-        android:layout_width="22dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="476dp"
-        android:layout_marginStart="93dp"
-        app:cornerRadius="40dp" />
-
-    <TextView
-        android:id="@+id/session_status"
-        android:textColor="#000"
-        android:text="cardio session NOT in progress"
+    <LinearLayout
+        android:id="@+id/status_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:layout_below="@+id/calendar"
-        android:layout_marginStart="115dp" />
+        android:layout_centerHorizontal="true"
+        android:padding="12dp">
+
+        <Button
+            android:id="@+id/status_circle"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:backgroundTint="@color/black"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="11dp" />
+
+        <TextView
+            android:id="@+id/session_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Cardio session NOT in progress"
+            android:textColor="#000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/session_metrics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/status_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/session_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/session_timer_default"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/session_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/session_distance_default"
+            android:textColor="#000" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/description"
-        android:text="@string/description"
-        android:textColor="#000"
         android:layout_width="330dp"
-        android:layout_height="270dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/session_metrics"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="40dp"
         android:background="@color/light_gray"
         android:padding="12dp"
-        android:layout_below="@+id/session_status"
-        android:layout_marginStart="40dp" />
+        android:text="@string/description"
+        android:textColor="#000" />
 
     <Button
         android:id="@+id/track_cardio"
+        android:layout_below="@+id/description"
+        android:layout_marginStart="40dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:text="@string/track_cardio"
         android:textSize="15sp"
         android:backgroundTint="@color/black"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="800dp"
-        android:layout_marginStart="40dp"
         app:cornerRadius="10dp" />
 
     <Button
         android:id="@+id/add_workout"
+        android:layout_below="@+id/description"
+        android:layout_toEndOf="@+id/track_cardio"
+        android:layout_marginStart="16dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:text="@string/add_workout"
         android:textSize="15sp"
         android:backgroundTint="@color/black"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="800dp"
-        android:layout_marginStart="220dp"
         app:cornerRadius="10dp" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/admob_banner_unit_id" />
 
 </RelativeLayout>

@@ -44,6 +44,7 @@ class FirebaseRepository {
                             sets = exercise.getLong("sets")?.toInt() ?: 0,
                             reps = exercise.getLong("reps")?.toInt() ?: 0,
                             weight = exercise.getDouble("weight") ?: 0.0,
+                            weightUnit = exercise.getString("weightUnit") ?: "kg",
                             intensity = exercise.getString("intensity") ?: "",
                             type = "workout"
                         )

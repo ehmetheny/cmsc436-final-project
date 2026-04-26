@@ -9,6 +9,7 @@ sealed class Exercise {
         val sets : Int = 0,
         val reps : Int = 0,
         val weight : Double = 0.0,
+        val weightUnit : String = "kg",
         val intensity : String = "",
         val type: String = "workout"
     ) : Exercise()
