@@ -13,8 +13,8 @@ import android.widget.Button
 import android.widget.CalendarView
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.exercise.controller.DiaryController
 import com.example.exercise.location.LocationTracker
 import com.example.exercise.model.Exercise
@@ -34,6 +34,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adView: AdView
     private lateinit var locationTracker: LocationTracker
     private var pendingCardioStartAfterPermission = false
+    private val requestLocationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            if (pendingCardioStartAfterPermission) {
+                diary.startCardioSession()
+                locationTracker.start()
+                updateSessionStatus()
+            }
+            pendingCardioStartAfterPermission = false
+        } else {
+            pendingCardioStartAfterPermission = false
+            sessionStatus.text = "Location permission is required for cardio GPS tracking."
+        }
+    }
     private val timerHandler = Handler(Looper.getMainLooper())
     private val timerRunnable = object : Runnable {
         override fun run() {
@@ -150,11 +165,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         pendingCardioStartAfterPermission = true
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-            LOCATION_PERMISSION_REQUEST_CODE
-        )
+        requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
     private fun isHasLocationPermission(): Boolean {
@@ -162,26 +173,6 @@ class MainActivity : AppCompatActivity() {
             this,
             Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) return
-        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (pendingCardioStartAfterPermission) {
-                diary.startCardioSession()
-                locationTracker.start()
-                updateSessionStatus()
-            }
-            pendingCardioStartAfterPermission = false
-        } else {
-            pendingCardioStartAfterPermission = false
-            sessionStatus.text = "Location permission is required for cardio GPS tracking."
-        }
     }
 
     override fun onDestroy() {
@@ -213,7 +204,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 101
         lateinit var diary : DiaryController
     }
 }
