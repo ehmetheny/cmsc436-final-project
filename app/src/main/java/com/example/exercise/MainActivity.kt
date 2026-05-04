@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Button
 import android.widget.CalendarView
 import android.graphics.Color
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.activity.result.contract.ActivityResultContracts
@@ -20,8 +21,11 @@ import com.example.exercise.location.LocationTracker
 import com.example.exercise.model.Exercise
 import com.example.exercise.repository.FirebaseRepository
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var calendarView : CalendarView
@@ -66,6 +70,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+
+
         // Initialize Repository and Controller
         val firebaseRepository = FirebaseRepository()
         diary = DiaryController( firebaseRepository )
@@ -91,12 +97,8 @@ class MainActivity : AppCompatActivity() {
         trackCardioBtn.setOnClickListener{ trackCardio() }
 
         calendarView.setOnDateChangeListener { _, year, month, day ->
-            val date = if (month + 1 < 10) {
-                "$year-0${month + 1}-$day"
-            } else {
-                "$year-${month + 1}-$day"
-            }
-            openLog( date )
+            val date = String.format("%04d-%02d-%02d", year, month + 1, day)
+            openLog(date)
         }
 
         updateSessionStatus()
@@ -201,6 +203,23 @@ class MainActivity : AppCompatActivity() {
         val minutes = totalSeconds / 60L
         val seconds = totalSeconds % 60L
         return String.format("%02d:%02d", minutes, seconds)
+    }
+    private fun addBannerAd() {
+        MobileAds.initialize(this)
+
+        adView = AdView(this)
+        val adSize = AdSize(AdSize.FULL_WIDTH, AdSize.AUTO_HEIGHT)
+        adView.setAdSize(adSize)
+        adView.adUnitId = getString(R.string.admob_banner_unit_id)
+
+        val builder = AdRequest.Builder()
+        builder.addKeyword("fitness")
+        builder.addKeyword("workout")
+        val request = builder.build()
+
+        val adLayout = findViewById<LinearLayout>(R.id.adView)
+        adLayout.addView(adView)
+        adView.loadAd(request)
     }
 
     companion object {
