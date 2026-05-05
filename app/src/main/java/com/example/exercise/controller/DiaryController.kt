@@ -94,7 +94,7 @@ class DiaryController {
         repository.getWorkouts(callback)
     }
 
-    fun fetchLeaderboard(limit: Long = 50, callback: (List<UserStats>) -> Unit) {
+    fun fetchLeaderboard(limit: Long = 20, callback: (List<UserStats>) -> Unit) {
         repository.fetchLeaderboard(limit, callback)
     }
 
