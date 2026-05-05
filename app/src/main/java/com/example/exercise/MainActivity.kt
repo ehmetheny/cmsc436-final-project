@@ -162,7 +162,9 @@ class MainActivity : AppCompatActivity() {
         if (diary.getCardioSessionStatus()) {
             locationTracker.stop()
             diary.stopCardioSession()
+            trackCardioBtn.text = "Track Cardio"
         } else {
+            trackCardioBtn.text = "Stop Cardio"
             startCardioWithPermissionCheck()
         }
         updateSessionStatus()
