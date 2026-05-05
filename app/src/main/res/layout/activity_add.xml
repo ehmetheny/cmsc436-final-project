@@ -15,22 +15,32 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:id="@+id/display_name_readonly"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
     <EditText
         android:id="@+id/activity_input"
         android:layout_width="330dp"
         android:layout_height="48dp"
-        android:layout_marginTop="30dp"
+        android:layout_below="@id/display_name_readonly"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/title"
+        android:layout_marginTop="16dp"
         android:hint="@string/activity" />
 
     <EditText
         android:id="@+id/sets_input"
         android:layout_width="330dp"
         android:layout_height="48dp"
-        android:layout_marginTop="100dp"
+        android:layout_below="@id/activity_input"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/title"
+        android:layout_marginTop="12dp"
         android:inputType="numberDecimal"
         android:hint="@string/sets"/>
 
@@ -38,9 +48,9 @@
         android:id="@+id/reps_input"
         android:layout_width="330dp"
         android:layout_height="48dp"
-        android:layout_marginTop="170dp"
+        android:layout_below="@id/sets_input"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/title"
+        android:layout_marginTop="12dp"
         android:inputType="numberDecimal"
         android:hint="@string/reps" />
 
@@ -48,9 +58,9 @@
         android:id="@+id/weight_input"
         android:layout_width="330dp"
         android:layout_height="48dp"
-        android:layout_marginTop="240dp"
+        android:layout_below="@id/reps_input"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/title"
+        android:layout_marginTop="12dp"
         android:inputType="numberDecimal"
         android:hint="@string/weight" />
 
@@ -127,6 +137,6 @@
         android:textColor="@color/black"
         android:backgroundTint="#0000"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/submit" />
+        android:layout_below="@id/submit" />
 
 </RelativeLayout>

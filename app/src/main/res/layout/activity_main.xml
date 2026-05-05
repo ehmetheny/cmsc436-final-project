@@ -114,7 +114,7 @@
                 android:layout_below="@+id/description"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="8dp"
                 android:backgroundTint="@color/black"
                 android:text="@string/track_cardio"
                 android:textSize="15sp"
@@ -128,9 +128,23 @@
                 android:layout_toEndOf="@+id/track_cardio"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="8dp"
                 android:backgroundTint="@color/black"
                 android:text="@string/add_workout"
+                android:textSize="15sp"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/leaderboard_btn"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@+id/add_workout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/black"
+                android:text="@string/leaderboard_button"
                 android:textSize="15sp"
                 app:cornerRadius="10dp" />
 

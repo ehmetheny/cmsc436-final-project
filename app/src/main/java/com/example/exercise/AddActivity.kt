@@ -1,5 +1,6 @@
 package com.example.exercise
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -9,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.exercise.controller.DiaryController
+import com.example.exercise.model.User
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -23,11 +25,13 @@ class AddActivity : AppCompatActivity() {
     private lateinit var usePoundsSwitch : Switch
     private lateinit var intensitySeekBar : SeekBar
     private lateinit var intensityPreview : TextView
+    private lateinit var displayNameReadonly : TextView
     private lateinit var submitBtn : Button
     private lateinit var cancelBtn : Button
+    private lateinit var prefs: SharedPreferences
 
     companion object {
-        private const val PREFS_NAME = "exercise_prefs"
+        const val PREFS_NAME = "exercise_prefs"
         private const val PREF_DEFAULT_INTENSITY = "default_intensity"
         private const val PREF_USE_POUNDS = "use_pounds"
         private const val INTENSITY_LOW = "Low"
@@ -35,15 +39,11 @@ class AddActivity : AppCompatActivity() {
         private const val INTENSITY_HIGH = "High"
     }
 
-    private val prefs by lazy {
-        getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
-        // just added this i got too lazy callin it everytime
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate( savedInstanceState )
 
         setContentView(R.layout.activity_add)
+        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
 
         activity = findViewById( R.id.activity_input )
         sets = findViewById( R.id.sets_input )
@@ -53,19 +53,31 @@ class AddActivity : AppCompatActivity() {
         usePoundsSwitch = findViewById(R.id.use_pounds_switch)
         intensitySeekBar = findViewById(R.id.intensity_seekbar)
         intensityPreview = findViewById(R.id.intensity_preview)
+        displayNameReadonly = findViewById(R.id.display_name_readonly)
         submitBtn = findViewById( R.id.submit )
         cancelBtn = findViewById( R.id.cancel )
 
         loadPreferences()
         bindSeekBarListener()
         bindUnitPreferenceListener()
+        refreshDisplayNameLabel()
 
         submitBtn.setOnClickListener{ submit() }
         cancelBtn.setOnClickListener{ finish() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        refreshDisplayNameLabel()
+    }
+
+    private fun refreshDisplayNameLabel() {
+        displayNameReadonly.text = getString(R.string.logging_as, User.getDisplayName(this))
+    }
+
     fun submit() {
         val diary : DiaryController = MainActivity.diary
+
         val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val currentDate = formatter.format(Date())
         val activity = activity.text.toString()

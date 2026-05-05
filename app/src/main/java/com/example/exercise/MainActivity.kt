@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.exercise.controller.DiaryController
 import com.example.exercise.location.LocationTracker
 import com.example.exercise.model.Exercise
+import com.example.exercise.model.User
 import com.example.exercise.repository.FirebaseRepository
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var statusCircle : View
     private lateinit var addWorkoutBtn : Button
     private lateinit var trackCardioBtn : Button
+    private lateinit var leaderboardBtn : Button
     private lateinit var adView: AdView
     private lateinit var locationTracker: LocationTracker
     private var pendingCardioStartAfterPermission = false
@@ -68,13 +70,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if (User.getDisplayName(this).isBlank()) {
+            startActivity(Intent(this, DisplayNameActivity::class.java))
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_main)
 
-
-
-        // Initialize Repository and Controller
-        val firebaseRepository = FirebaseRepository()
-        diary = DiaryController( firebaseRepository )
+        val userId = User.getOrCreate(this).id
+        diary = DiaryController(FirebaseRepository(userId))
 
         // Minimal Test: Add a workout
         //testBackend()
@@ -86,15 +91,14 @@ class MainActivity : AppCompatActivity() {
         statusCircle = findViewById<View>( R.id.status_circle )
         addWorkoutBtn = findViewById<Button>( R.id.add_workout )
         trackCardioBtn = findViewById<Button>( R.id.track_cardio )
+        leaderboardBtn = findViewById(R.id.leaderboard_btn)
         adView = findViewById(R.id.adView)
-        locationTracker = LocationTracker(this) { deltaMeters ->
-            diary.addCardioDistanceMeters(deltaMeters)
-        }
+        locationTracker = LocationTracker(this) { deltaMeters -> diary.addCardioDistanceMeters(deltaMeters) }
         MobileAds.initialize(this)
         adView.loadAd(AdRequest.Builder().build())
-
         addWorkoutBtn.setOnClickListener{ addWorkout() }
         trackCardioBtn.setOnClickListener{ trackCardio() }
+        leaderboardBtn.setOnClickListener { openLeaderboard() }
 
         calendarView.setOnDateChangeListener { _, year, month, day ->
             val date = String.format("%04d-%02d-%02d", year, month + 1, day)
@@ -148,6 +152,10 @@ class MainActivity : AppCompatActivity() {
     fun addWorkout() {
         val intent : Intent = Intent( this, AddActivity::class.java )
         startActivity( intent )
+    }
+
+    private fun openLeaderboard() {
+        startActivity(Intent(this, LeaderboardActivity::class.java))
     }
 
     fun trackCardio() {

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/display_name_title"
+        android:text="@string/display_name_welcome_title"
+        android:textAlignment="center"
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        android:background="@color/light_blue"
+        android:padding="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <ScrollView
+        android:id="@+id/display_name_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/display_name_title"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/display_name_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="28dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.15"
+                android:text="@string/display_name_welcome_body"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/display_name_heading"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/display_name_intro"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="28dp"
+                android:text="@string/display_name_field_label"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/display_name_input"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/display_name_heading"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:hint="@string/leaderboard_name_hint_required"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="24"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/display_name_continue"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/display_name_input"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="28dp"
+                android:backgroundTint="@color/black"
+                android:text="@string/continue_label"
+                android:textSize="15sp"
+                app:cornerRadius="10dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

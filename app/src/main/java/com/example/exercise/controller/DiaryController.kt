@@ -1,6 +1,7 @@
 package com.example.exercise.controller
 
 import com.example.exercise.model.Exercise
+import com.example.exercise.model.UserStats
 import com.example.exercise.repository.FirebaseRepository
 import kotlin.math.round
 import java.text.SimpleDateFormat
@@ -91,6 +92,14 @@ class DiaryController {
 
     fun fetchWorkouts(callback: (List<Exercise>) -> Unit) {
         repository.getWorkouts(callback)
+    }
+
+    fun fetchLeaderboard(limit: Long = 50, callback: (List<UserStats>) -> Unit) {
+        repository.fetchLeaderboard(limit, callback)
+    }
+
+    fun saveLeaderboardDisplayName(name: String) {
+        repository.saveLeaderboardDisplayName(name)
     }
 
     fun deleteWorkout(id: String) {
